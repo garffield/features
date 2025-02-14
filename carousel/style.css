@@ -1,0 +1,98 @@
+* {
+    margin: 0;
+    font: var(--fontInter);
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.body-card-slider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 0 35px;
+    background: white;
+}
+
+.wrapper {
+    max-width: 1400px;
+    width: 100%;
+    position: relative;
+}
+
+.wrapper i {
+    height: 50px;
+    width: 50px;
+    background: #FFF;
+    text-align: center;
+    line-height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    font-size: 1.25rem;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.23);
+    user-select: none;
+}
+
+.wrapper i:first-child {
+    left: -22px;
+    transform: rotate(180deg);
+}
+
+.wrapper i:last-child {
+    right: -22px;
+}
+
+.wrapper .carousel {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: calc((100% / 5) - 12px);
+    gap: 13px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    scrollbar-width: 0;
+    min-height: 200px; /* Evita colapso antes do carregamento */
+}
+
+.carousel::-webkit-scrollbar {
+    display: none;
+}
+
+.carousel :where(.card, .img) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carousel.dragging {
+    scroll-snap-type: none;
+    scroll-behavior: auto;
+}
+
+.carousel.no-transition {
+    scroll-behavior: auto;
+}
+
+.carousel.dragging .card {
+    cursor: grab;
+    user-select: none;
+}
+
+.carousel .card {
+    scroll-snap-align: start;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 900px) {
+    .wrapper .carousel {
+        grid-auto-columns: calc((100% / 2) - 9px);
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .wrapper .carousel {
+        grid-auto-columns: 100%;
+    }
+}
