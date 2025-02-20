@@ -84,8 +84,19 @@
     scroll-snap-align: start;
     cursor: pointer;
 }
+@media (max-width: 1440px) {
+    .wrapper .carousel {
+        grid-auto-columns: calc((100% / 4) - 12px);
+    }
+}
 
-@media screen and (max-width: 900px) {
+@media (max-width: 1024px) {
+    .wrapper .carousel {
+        grid-auto-columns: calc((100% / 3) - 12px);
+    }
+}
+
+@media screen and (max-width: 768px) {
     .wrapper .carousel {
         grid-auto-columns: calc((100% / 2) - 9px);
     }
@@ -95,4 +106,4 @@
     .wrapper .carousel {
         grid-auto-columns: 100%;
     }
-}
+} 

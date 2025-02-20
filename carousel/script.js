@@ -1,6 +1,15 @@
-import produtoCard from "./template/component.js"
+import produtoCard from "./template/component.js";
+import carousel from "../carousel/carouselComponent/carousel.js";
 
-let carouselContent = document.querySelector(".carousel");
+let carouselContent;
+
+function renderCarousel() {
+    const carouselElement = carousel();
+    document.body.appendChild(carouselElement);
+    carouselContent = document.querySelector(".carousel");
+}
+
+renderCarousel();
 
 async function carregarProdutos(endpoint) {
     const response = await fetch(`https://fakestoreapi.com/${endpoint}`);
@@ -21,7 +30,7 @@ class Carousel {
         this.isDragging = false;
         this.startX = 0;
         this.startScrollLeft = 0;
-        
+
         this.moveButton();
         this.cloneBegin();
         this.cloneLast();
